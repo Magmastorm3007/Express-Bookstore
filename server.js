@@ -8,15 +8,14 @@ const { response } = require('express')
 const stripe=require("stripe")("sk_test_51LEEGeSGbGUoxFPiASowylwPDLRipqVepHokW5tCidCgeKowfWukMU90FKFygftqCbtQbkjqjxAZS8HkJJNZANcj00qOg3jVUe")
 
 
-// create express app
 const app=express()
+app.use(cors())
 
-// define port to run express app
 const  port = process.env.PORT || 5000;
 app.use(express.json())
 app.use('/api',require('./routes/Bookroute'))
 
-app.use(cors())
+
 
 app.post("/payments/create", cors(), async (req, res) => {
 
